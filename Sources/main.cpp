@@ -1,28 +1,9 @@
-//Toggling PT5 to sound the buzzer for Dragon12 Plus Trainer Board 
-//PT5 of PORTT is connected to buzzer/speaker on Dragon12+ board
-//This program toggles PT5 to sound the buzzer. Change the delay size to get a different sound
-//Modified from Example 7-23 Mazidi&Causey HCS12 book
-
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
+#include "music_common.h"
 
-int melody[10] = {1,12,3,12,1,14,3,14,5,13};
-int tempo[] = {1,1,1,1,1,1,1,1,1,1};
-
-
-void MSDelay(unsigned int);
-
-void main(void) 
-{
-  /* put your own code here */
-  
-       
-    DDRT = DDRT | 0b00100000;    // PTT5 as output 
-     
-    for (;;) 			
-      {  
-    
-        for(int i=0;i<10;++i) {
+void buzz(long frequency, long length) {
+   for(int i=0;i<10;++i) {
           
           for(int j=0;j<1000/melody[i]*tempo[i];++j) {
             PTT = PTT | 0x20;      //make PT5=1
@@ -32,15 +13,26 @@ void main(void)
           }
       
         }
-       
-
-      }
-
 }
 
-void MSDelay(unsigned int itime)  //msec delay
+//millisecond delay for XTAL=8MHz, PLL=48MHz
+//The HCS12 Serial Monitor is used to download and  the program.
+//Serial Monitor uses PLL=48MHz
+
+ void MSDelay(unsigned int itime)
   {
     unsigned int i; unsigned int j;
     for(i=0;i<itime;i++)
-      for(j=0;j<400;j++);
+      for(j=0;j<4000;j++);    //1 msec. tested using Scope
   }
+  
+  
+
+void main(void) 
+{  
+       
+    DDRT = DDRT | 0b00100000;    // PTT5 as output 
+     
+    
+
+}
