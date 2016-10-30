@@ -96,7 +96,7 @@
 //#define melodyPin 3
 
 //Mario main theme melody
-int melody[] = {
+unsigned int melody[] = {
   NOTE_E7, NOTE_E7, 0, NOTE_E7,
   0, NOTE_C7, NOTE_E7, 0,
   NOTE_G7, 0, 0,  0,
@@ -123,7 +123,7 @@ int melody[] = {
   NOTE_D7, NOTE_B6, 0, 0
 };
 //Mario main them tempo
-int tempo[] = {
+unsigned int tempo[] = {
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
@@ -150,7 +150,7 @@ int tempo[] = {
   12, 12, 12, 12,
 };
 //Underworld melody
-int underworld_melody[] = {
+unsigned int underworld_melody[] = {
   NOTE_C4, NOTE_C5, NOTE_A3, NOTE_A4,
   NOTE_AS3, NOTE_AS4, 0,
   0,
@@ -172,7 +172,7 @@ int underworld_melody[] = {
   0, 0, 0
 };
 //Underwolrd tempo
-int underworld_tempo[] = {
+unsigned int underworld_tempo[] = {
   12, 12, 12, 12,
   12, 12, 6,
   3,

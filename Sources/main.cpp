@@ -1,38 +1,36 @@
 #include <hidef.h>      /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
 #include "music_common.h"
+#include "buzz.h"
 
-void buzz(long frequency, long length) {
-   for(int i=0;i<10;++i) {
-          
-          for(int j=0;j<1000/melody[i]*tempo[i];++j) {
-            PTT = PTT | 0x20;      //make PT5=1
-            MSDelay(melody[i]);         //change the delay size to see what happens
-            PTT = PTT & 0xDF;      //Make PT5=0
-            MSDelay(melody[i]);         //change delay size....
-          }
-      
-        }
-}
-
-//millisecond delay for XTAL=8MHz, PLL=48MHz
-//The HCS12 Serial Monitor is used to download and  the program.
-//Serial Monitor uses PLL=48MHz
-
- void MSDelay(unsigned int itime)
-  {
-    unsigned int i; unsigned int j;
-    for(i=0;i<itime;i++)
-      for(j=0;j<4000;j++);    //1 msec. tested using Scope
-  }
   
+  
+  void sing(unsigned int song) {
+  
+    unsigned int size = sizeof(melody) / sizeof(int);
+    for (unsigned int thisNote = 0; thisNote < size; thisNote++) {
+ 
+      // to calculate the note duration, take one second
+      // divided by the note type.
+      //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
+      unsigned int noteDuration = 1000 / tempo[thisNote];
+ 
+      buzz(melody[thisNote], noteDuration);
+ 
+      // to distinguish the notes, set a minimum time between them.
+      // the note's duration + 30% seems to work well:
+      unsigned int pauseBetweenNotes = noteDuration;
+      MSDelay(pauseBetweenNotes); 
+    }
+    
+  }
   
 
 void main(void) 
 {  
        
-    DDRT = DDRT | 0b00100000;    // PTT5 as output 
-     
+    DDRT = DDRT | 0b00100000;    // PTT5 as output
     
+    sing(1); 
 
 }
