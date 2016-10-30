@@ -193,3 +193,52 @@ unsigned int underworld_tempo[] = {
   10, 10, 10,
   3, 3, 3
 };
+
+unsigned int underworld_melody1[] = {
+  NOTE_C5, NOTE_C6, NOTE_A4, NOTE_A5, 
+  NOTE_AS4, NOTE_AS5, 0,
+  0,
+  NOTE_C5, NOTE_C6, NOTE_A4, NOTE_A5, 
+  NOTE_AS4, NOTE_AS5, 0,
+  0,
+  NOTE_F4, NOTE_F5, NOTE_D4, NOTE_D5,
+  NOTE_DS4, NOTE_DS5, 0,
+  0,
+  NOTE_F4, NOTE_F5, NOTE_D4, NOTE_D5,
+  NOTE_DS4, NOTE_DS5, 0,
+  0, NOTE_DS5, NOTE_D5, NOTE_CS5,
+  NOTE_C5, NOTE_DS5, 
+  NOTE_DS5, NOTE_GS4,
+  NOTE_G4, NOTE_CS5,
+  NOTE_C5, NOTE_FS5,NOTE_F5, NOTE_E4, NOTE_AS5, NOTE_A5,
+  NOTE_GS5, NOTE_DS5, NOTE_B4,
+  NOTE_AS4, NOTE_A4, NOTE_GS4,
+  0, 0, 0
+};
+
+unsigned int harmony1[] = {
+  NOTE_FS6, NOTE_FS6,0,NOTE_FS6, 
+  0, NOTE_FS6, NOTE_FS6,0,
+  NOTE_B6,0,0,0,
+  NOTE_G6,0,0,0,
+
+  NOTE_E6, 0, 0,NOTE_C6, 
+  0, 0,NOTE_G5,0,
+  0, NOTE_C6, 0, NOTE_D6, 
+  0, NOTE_CS6, NOTE_C6, 0,
+
+  NOTE_C6, NOTE_G6, NOTE_B6, 
+  NOTE_C7, 0, NOTE_A6, NOTE_B6, 
+  0, NOTE_A6, 0,NOTE_E6, 
+  NOTE_F6, NOTE_D6, 0,0,
+
+  NOTE_E6, 0, 0,NOTE_C6, 
+  0, 0,NOTE_G5,0,
+  0, NOTE_C6, 0, NOTE_D6, 
+  0, NOTE_CS6, NOTE_C6, 0, 
+
+  NOTE_C6, NOTE_G6, NOTE_B6, 
+  NOTE_C7, 0, NOTE_A6, NOTE_B6, 
+  0, NOTE_A6, 0,NOTE_E6, 
+  NOTE_F6, NOTE_D6, 0,0,
+};

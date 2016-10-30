@@ -25,7 +25,7 @@ Entry point: 0xC000 (_Startup)
 _startupData is allocated at 0xC00B and uses 14 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x1100     312
+  _Range   pZeroOut       0x1100     536
   _Copy    *toCopyDownBeg 0xC11F
   int      nofInitBodies  0
   _Cpp     *initBodies    0xC01D
@@ -40,10 +40,10 @@ Section Name                    Size  Type     From       To       Segment
 .init                             11     R     0xC000     0xC00A   ROM_C000
 .startData                        18     R     0xC00B     0xC01C   ROM_C000
 NON_BANKED                       258     R     0xC01D     0xC11E   ROM_C000
-.copy                            318     R     0xC11F     0xC25C   ROM_C000
-.text                            235     R   0x308000   0x3080EA   PAGE_30
+.copy                            542     R     0xC11F     0xC33C   ROM_C000
+.text                            296     R   0x308000   0x308127   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
-.data                            312   R/W     0x1100     0x1237   RAM
+.data                            536   R/W     0x1100     0x1317   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
 .abs_section_9                     1   N/I        0x9        0x9   .absSeg1
 .abs_section_a                     1   N/I        0xA        0xA   .absSeg2
@@ -388,8 +388,8 @@ NON_BANKED                       258     R     0xC01D     0xC11E   ROM_C000
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
-READ_ONLY (R):         34A (dec:      842)
-READ_WRITE (R/W):      238 (dec:      568)
+READ_ONLY (R):         467 (dec:     1127)
+READ_WRITE (R/W):      318 (dec:      792)
 NO_INIT (N/I):         190 (dec:      400)
 
 *********************************************************************************************
@@ -762,15 +762,17 @@ MODULE:                 -- rtshc12.c.o (ansibi.lib) --
 - VARIABLES:
 MODULE:                 -- main.cpp.o --
 - PROCEDURES:
-     sing__FUi                               30803E      39      57       2   .text       
-     main                                    308077       C      12       2   .text       
+     sing__FUi                               30803E      7F     127       2   .text       
+     main                                    3080BD       D      13       2   .text       
 - VARIABLES:
      melody                                    1100      9C     156       1   .data       
      tempo                                     119C      9C     156       1   .data       
+     underworld_melody                         1238      70     112       1   .data       
+     underworld_tempo                          12A8      70     112       1   .data       
 MODULE:                 -- buzz.cpp.o --
 - PROCEDURES:
-     buzz__FUiT0                             308083      49      73       2   .text       
-     MSDelay__FUi                            3080CC      1F      31       6   .text       
+     buzz__FUiT0                             3080CA      3F      63       4   .text       
+     MSDelay__FUi                            308109      1F      31       6   .text       
 - VARIABLES:
 
 *********************************************************************************************
@@ -780,9 +782,9 @@ MODULE STATISTIC
   mc9s12dg256.c.o                            400      0      0
   Start12.cpp.o                                0     73      0
   rtshc12.c.o (ansibi.lib)                     0    258      0
-  main.cpp.o                                 312     69      0
-  buzz.cpp.o                                   0    104      0
-  other                                      256     20    318
+  main.cpp.o                                 536    140      0
+  buzz.cpp.o                                   0     94      0
+  other                                      256     20    542
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
@@ -790,7 +792,7 @@ SECTION USE IN OBJECT-ALLOCATION SECTION
 SECTION: ".text"
   Init__Fv sing__FUi main buzz__FUiT0 MSDelay__FUi 
 SECTION: ".data"
-  melody tempo 
+  melody tempo underworld_melody underworld_tempo 
 SECTION: ".init"
   _Startup 
 SECTION: "NON_BANKED"
@@ -1825,15 +1827,17 @@ OBJECT LIST SORTED BY ADDRESS
      _CAN4TXTSR                                 2BE       2       2       0   .abs_section_2be
      melody                                    1100      9C     156       1   .data       
      tempo                                     119C      9C     156       1   .data       
+     underworld_melody                         1238      70     112       1   .data       
+     underworld_tempo                          12A8      70     112       1   .data       
      _Startup                                  C000       B      11       0   .init       
      _lDivMod                                  C01D      BE     190       2   NON_BANKED  
      _NEG_P                                    C0DB       F      15       4   NON_BANKED  
      _LDIVS                                    C0EA      35      53       1   NON_BANKED  
      Init__Fv                                308000      3E      62       2   .text       
-     sing__FUi                               30803E      39      57       2   .text       
-     main                                    308077       C      12       2   .text       
-     buzz__FUiT0                             308083      49      73       2   .text       
-     MSDelay__FUi                            3080CC      1F      31       6   .text       
+     sing__FUi                               30803E      7F     127       2   .text       
+     main                                    3080BD       D      13       2   .text       
+     buzz__FUiT0                             3080CA      3F      63       4   .text       
+     MSDelay__FUi                            308109      1F      31       6   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -1849,14 +1853,14 @@ NOT USED VARIABLES
 rtshc12.c.o (ansibi.lib):
   _PowOfTwo_8 _PowOfTwo_16 _PowOfTwo_32 errno 
 main.cpp.o:
-  underworld_melody underworld_tempo 
+  underworld_melody1 harmony1 
 
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
 ------- ROM-ADDRESS: 0xC11F ---- SIZE       4 ---
 Filling bytes inserted
- 01381100
+ 02181100
 ------- ROM-ADDRESS: 0xC123 ---- RAM-ADDRESS: 0x1100 ---- SIZE      18 ---
 Name of initialized Object : melody
  0A4D0A4D00 000A4D0000 082D0A4D00
@@ -1935,7 +1939,49 @@ Name of initialized Object : tempo:1
  0C000C000C 0009000900 09000C000C
  000C000C00 0C000C000C 000C000C00
  0C000C000C
-------- ROM-ADDRESS: 0xC25B ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xC25B ---- RAM-ADDRESS: 0x1238 ---- SIZE      12 ---
+Name of initialized Object : underworld_melody
+ 0106020B00 DC01B800E9 01D2
+------- ROM-ADDRESS: 0xC267 ---- SIZE       4 ---
+Filling bytes inserted
+ 00000000
+------- ROM-ADDRESS: 0xC26B ---- RAM-ADDRESS: 0x1248 ---- SIZE      12 ---
+Name of initialized Object : underworld_melody:16
+ 0106020B00 DC01B800E9 01D2
+------- ROM-ADDRESS: 0xC277 ---- SIZE       5 ---
+Filling bytes inserted
+ 0000000000
+------- ROM-ADDRESS: 0xC27C ---- RAM-ADDRESS: 0x1259 ---- SIZE      11 ---
+Name of initialized Object : underworld_melody:33
+ AF015D0093 0126009C01 37
+------- ROM-ADDRESS: 0xC287 ---- SIZE       5 ---
+Filling bytes inserted
+ 0000000000
+------- ROM-ADDRESS: 0xC28C ---- RAM-ADDRESS: 0x1269 ---- SIZE      11 ---
+Name of initialized Object : underworld_melody:49
+ AF015D0093 0126009C01 37
+------- ROM-ADDRESS: 0xC297 ---- SIZE       4 ---
+Filling bytes inserted
+ 00000000
+------- ROM-ADDRESS: 0xC29B ---- RAM-ADDRESS: 0x1278 ---- SIZE      42 ---
+Name of initialized Object : underworld_melody:64
+ 0137011501 2601150137 013700D000
+ C401150106 0172015D00 A501D201B8
+ 019F013700 F700E900DC 00D0
+------- ROM-ADDRESS: 0xC2C5 ---- SIZE       7 ---
+Filling bytes inserted
+ 0000000000 0000
+------- ROM-ADDRESS: 0xC2CC ---- RAM-ADDRESS: 0x12A9 ---- SIZE     111 ---
+Name of initialized Object : underworld_tempo:1
+ 0C000C000C 000C000C00 0C00060003
+ 000C000C00 0C000C000C 000C000600
+ 03000C000C 000C000C00 0C000C0006
+ 0003000C00 0C000C000C 000C000C00
+ 0600060012 0012001200 0600060006
+ 0006000600 0600120012 0012001200
+ 120012000A 000A000A00 0A000A000A
+ 0003000300 03
+------- ROM-ADDRESS: 0xC33B ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -1945,7 +1991,8 @@ OBJECT-DEPENDENCIES SECTION
 _Startup                  USES __SEG_END_SSTACK Init__Fv main 
 _LDIVS                    USES _NEG_P _lDivMod 
 Init__Fv                  USES _startupData 
-sing__FUi                 USES tempo melody buzz__FUiT0 MSDelay__FUi 
+sing__FUi                 USES tempo melody underworld_tempo underworld_melody 
+                                buzz__FUiT0 MSDelay__FUi 
 main                      USES _DDRT sing__FUi 
 buzz__FUiT0               USES _LDIVS _PTT MSDelay__FUi 
 
@@ -1983,5 +2030,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 842
+Total size of all blocks to be downloaded: 1127
 
