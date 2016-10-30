@@ -60,6 +60,10 @@ void main(void)
        
     DDRT = DDRT | 0b00100000;    // PTT5 as output
     
+    DDRB = DDRB | 0xFF;    // PTB as output
+    DDRJ = DDRJ | 0xFF;    // PTJ as output
+    PTJ = PTJ & 0;
+    
     while(1)
      sing(1); 
 
