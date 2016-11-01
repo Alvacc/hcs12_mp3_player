@@ -41,7 +41,7 @@ Section Name                    Size  Type     From       To       Segment
 .startData                        18     R     0xC00B     0xC01C   ROM_C000
 NON_BANKED                       278     R     0xC01D     0xC132   ROM_C000
 .copy                            542     R     0xC133     0xC350   ROM_C000
-.text                            365     R   0x308000   0x30816C   PAGE_30
+.text                            372     R   0x308000   0x308173   PAGE_30
 .stack                           256   R/W     0x1000     0x10FF   RAM
 .data                            536   R/W     0x1100     0x1317   RAM
 .abs_section_8                     1   N/I        0x8        0x8   .absSeg0
@@ -388,7 +388,7 @@ NON_BANKED                       278     R     0xC01D     0xC132   ROM_C000
 .vectSeg341_vect                   2     R     0xFFFE     0xFFFF   .vectSeg341
 
 Summary of section sizes per section type:
-READ_ONLY (R):         4C0 (dec:     1216)
+READ_ONLY (R):         4C7 (dec:     1223)
 READ_WRITE (R/W):      318 (dec:      792)
 NO_INIT (N/I):         190 (dec:      400)
 
@@ -772,8 +772,8 @@ MODULE:                 -- main.cpp.o --
      underworld_tempo                          12A8      70     112       1   .data       
 MODULE:                 -- buzz.cpp.o --
 - PROCEDURES:
-     buzz__FUiT0                             3080DC      72     114       4   .text       
-     MSDelay__FUi                            30814E      1F      31       6   .text       
+     buzz__FUiT0                             3080DC      79     121       4   .text       
+     MSDelay__FUi                            308155      1F      31       6   .text       
 - VARIABLES:
 
 *********************************************************************************************
@@ -784,7 +784,7 @@ MODULE STATISTIC
   Start12.cpp.o                                0     73      0
   rtshc12.c.o (ansibi.lib)                     0    278      0
   main.cpp.o                                 536    158      0
-  buzz.cpp.o                                   0    145      0
+  buzz.cpp.o                                   0    152      0
   other                                      256     20    542
 
 *********************************************************************************************
@@ -1838,8 +1838,8 @@ OBJECT LIST SORTED BY ADDRESS
      Init__Fv                                308000      3E      62       2   .text       
      sing__FUi                               30803E      7F     127       2   .text       
      main                                    3080BD      1F      31       2   .text       
-     buzz__FUiT0                             3080DC      72     114       4   .text       
-     MSDelay__FUi                            30814E      1F      31       6   .text       
+     buzz__FUiT0                             3080DC      79     121       4   .text       
+     MSDelay__FUi                            308155      1F      31       6   .text       
 
 *********************************************************************************************
 UNUSED-OBJECTS SECTION
@@ -2035,5 +2035,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 6
-Total size of all blocks to be downloaded: 1216
+Total size of all blocks to be downloaded: 1223
 

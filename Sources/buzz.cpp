@@ -7,7 +7,7 @@ void buzz(unsigned int frequency, unsigned int length) {
   unsigned int delayValue = (1000000 / frequency) / 2; // calculate the delay value between transitions
   //// 1 second's worth of 1000000 microseconds, divided by the frequency, then split in half since
   //// there are two phases to each cycle
-  unsigned int numCycles = 80; // calculate the number of cycles for proper timing
+  unsigned int numCycles = frequency * length/ 90; // calculate the number of cycles for proper timing
   //// multiply frequency, which is really cycles per second, by the number of seconds to
   //// get the total number of cycles to produce
   
@@ -57,5 +57,5 @@ void buzz(unsigned int frequency, unsigned int length) {
     unsigned int j;
     
     for(i=0;i<itime;i++)
-      for(j=0;j<24;j++);    //1 msec. tested using Scope
+      for(j=0;j<4;j++);    //1 millisecond. tested using Scope
   }
