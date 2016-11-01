@@ -16,8 +16,8 @@
       // to calculate the note duration, take one second
       // divided by the note type.
       //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-      unsigned int noteDuration = 1000 / tempo[thisNote];
- 
+      unsigned int noteDuration = 110 / tempo[thisNote];
+
       buzz(melody[thisNote], noteDuration);
  
       // to distinguish the notes, set a minimum time between them.
@@ -26,7 +26,7 @@
       MSDelay(pauseBetweenNotes); 
       
       // stop the tone playing:
-      buzz(0, noteDuration);
+      //buzz(0, noteDuration);
       
     }
     
@@ -37,8 +37,9 @@
       // to calculate the note duration, take one second
       // divided by the note type.
       //e.g. quarter note = 1000 / 4, eighth note = 1000/8, etc.
-      unsigned int noteDuration = 1000 / underworld_tempo[thisNote];
- 
+      
+      unsigned int noteDuration = 130 / underworld_tempo[thisNote];
+      
       buzz(underworld_melody[thisNote], noteDuration);
  
       // to distinguish the notes, set a minimum time between them.
@@ -47,7 +48,7 @@
       MSDelay(pauseBetweenNotes); 
       
       // stop the tone playing:
-      buzz(0, noteDuration);
+      //buzz(0, noteDuration);
       
     }
   }
@@ -64,7 +65,10 @@ void main(void)
     DDRJ = DDRJ | 0xFF;    // PTJ as output
     PTJ = PTJ & 0;
     
-    while(1)
-     sing(1); 
+    while(1) {
+      sing(1);
+      sing(2);
+      sing(1); 
+    }
 
 }
